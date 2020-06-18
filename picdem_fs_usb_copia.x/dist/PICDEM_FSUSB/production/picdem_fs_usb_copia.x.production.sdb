@@ -500,12 +500,12 @@ COMMAND_READ_POTENTIOMETER 55
 [s S2256 . 4 `uc 1 bLength 1 0 `uc 1 bDscType 1 1 `[1]ui 1 string 2 2 ]
 "220
 [v _sd000 sd000 `CS2256  1 e 4 0 ]
-[s S2260 . 52 `uc 1 bLength 1 0 `uc 1 bDscType 1 1 `[25]ui 1 string 50 2 ]
+[s S2260 . 26 `uc 1 bLength 1 0 `uc 1 bDscType 1 1 `[12]ui 1 string 24 2 ]
 "225
-[v _sd001 sd001 `CS2260  1 e 52 0 ]
-[s S2264 . 46 `uc 1 bLength 1 0 `uc 1 bDscType 1 1 `[22]ui 1 string 44 2 ]
+[v _sd001 sd001 `CS2260  1 e 26 0 ]
+[s S2264 . 36 `uc 1 bLength 1 0 `uc 1 bDscType 1 1 `[17]ui 1 string 34 2 ]
 "232
-[v _sd002 sd002 `CS2264  1 e 46 0 ]
+[v _sd002 sd002 `CS2264  1 e 36 0 ]
 [s S2268 . 29 `[29]uc 1 report 29 0 ]
 "239
 [v _hid_rpt01 hid_rpt01 `CS2268  1 e 29 0 ]

@@ -6,10 +6,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [s S417 `uc 1 `uc 1 `ui -> -> 1 `i `ux ]
 [n S417 . bLength bDscType string ]
 "225
-[s S418 `uc 1 `uc 1 `ui -> 25 `i ]
+[s S418 `uc 1 `uc 1 `ui -> 12 `i ]
 [n S418 . bLength bDscType string ]
 "232
-[s S419 `uc 1 `uc 1 `ui -> 22 `i ]
+[s S419 `uc 1 `uc 1 `ui -> 17 `i ]
 [n S419 . bLength bDscType string ]
 "239
 [s S420 `uc -> 29 `i ]
@@ -4297,41 +4297,28 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 3 `i `uc
 :U ..
 "227
--> 77 `ui
--> 105 `ui
--> 99 `ui
--> 114 `ui
--> 111 `ui
--> 99 `ui
+-> 67 `ui
 -> 104 `ui
 -> 105 `ui
+-> 115 `ui
 -> 112 `ui
+-> 97 `ui
+-> 115 `ui
 -> 32 `ui
 "228
--> 84 `ui
--> 101 `ui
--> 99 `ui
--> 104 `ui
--> 110 `ui
--> 111 `ui
--> 108 `ui
--> 111 `ui
--> 103 `ui
--> 121 `ui
--> 32 `ui
--> 73 `ui
--> 110 `ui
--> 99 `ui
+-> 67 `ui
+-> 46 `ui
+-> 65 `ui
 "229
 -> 46 `ui
 ..
 ..
 ..
 ]
-[; ;usb_descriptors.c: 225: const struct{uint8_t bLength;uint8_t bDscType;uint16_t string[25];}sd001={
+[; ;usb_descriptors.c: 225: const struct{uint8_t bLength;uint8_t bDscType;uint16_t string[12];}sd001={
 [; ;usb_descriptors.c: 226: sizeof(sd001),0x03,
-[; ;usb_descriptors.c: 227: {'M','i','c','r','o','c','h','i','p',' ',
-[; ;usb_descriptors.c: 228: 'T','e','c','h','n','o','l','o','g','y',' ','I','n','c','.'
+[; ;usb_descriptors.c: 227: {'C','h','i','s','p','a','s',' ',
+[; ;usb_descriptors.c: 228: 'C','.','A','.'
 [; ;usb_descriptors.c: 229: }};
 "232
 [v _sd002 `CS419 ~T0 @X0 1 e ]
@@ -4343,38 +4330,33 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 3 `i `uc
 :U ..
 "234
+-> 85 `ui
 -> 83 `ui
--> 105 `ui
--> 109 `ui
--> 112 `ui
--> 108 `ui
--> 101 `ui
+-> 66 `ui
 -> 32 `ui
--> 72 `ui
+-> 76 `ui
+-> 69 `ui
+-> 68 `ui
+-> 32 `ui
 -> 73 `ui
--> 68 `ui
--> 32 `ui
+-> 110 `ui
+-> 116 `ui
 "235
--> 68 `ui
 -> 101 `ui
--> 118 `ui
--> 105 `ui
+-> 114 `ui
+-> 102 `ui
+-> 97 `ui
 -> 99 `ui
--> 101 `ui
--> 32 `ui
--> 68 `ui
--> 101 `ui
--> 109 `ui
 "236
--> 111 `ui
+-> 101 `ui
 ..
 ..
 ..
 ]
-[; ;usb_descriptors.c: 232: const struct{uint8_t bLength;uint8_t bDscType;uint16_t string[22];}sd002={
+[; ;usb_descriptors.c: 232: const struct{uint8_t bLength;uint8_t bDscType;uint16_t string[17];}sd002={
 [; ;usb_descriptors.c: 233: sizeof(sd002),0x03,
-[; ;usb_descriptors.c: 234: {'S','i','m','p','l','e',' ','H','I','D',' ',
-[; ;usb_descriptors.c: 235: 'D','e','v','i','c','e',' ','D','e','m','o'
+[; ;usb_descriptors.c: 234: {'U','S','B',' ','L','E','D',' ','I','n','t',
+[; ;usb_descriptors.c: 235: 'e','r','f','a','c','e'
 [; ;usb_descriptors.c: 236: }};
 "239
 [v _hid_rpt01 `CS420 ~T0 @X0 1 e ]
