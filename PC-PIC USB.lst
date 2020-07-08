@@ -1,9 +1,9 @@
-CCS PCH C Compiler, Version 4.104, 5967               02-jul.-20 20:10
+CCS PCH C Compiler, Version 4.104, 5967               04-jul.-20 13:34
 
-               Filename: C:\Users\IBAUTISTA\Desktop\proteus\CSS_Proyecto2\Programa PIC\PC-PIC USB.lst
+               Filename: C:\Users\IBAUTISTA\Desktop\proteus\RepoPic\PICUSB\PC-PIC USB.lst
 
-               ROM used: 4754 bytes (15%)
-                         Largest free fragment is 28014
+               ROM used: 4788 bytes (15%)
+                         Largest free fragment is 27980
                RAM used: 416 (20%) at main() level
                          460 (22%) worst case
                Stack:    16 worst case (7 in main + 9 for interrupts)
@@ -87,7 +87,7 @@ CCS PCH C Compiler, Version 4.104, 5967               02-jul.-20 20:10
 120C:  BRA    120E
 120E:  DECFSZ FEF,F
 1210:  BRA    11F6
-1212:  GOTO   128A (RETURN)
+1212:  GOTO   12AC (RETURN)
 ....................  
 .................... #include <usb_cdc.h>             //Librería de control USB 
 .................... ///////////////////////////////////////////////////////////////////////// 
@@ -5099,7 +5099,7 @@ CCS PCH C Compiler, Version 4.104, 5967               02-jul.-20 20:10
 1110:  SUBLW  02
 1112:  BNZ   110C
 .................... } 
-1114:  GOTO   124C (RETURN)
+1114:  GOTO   1268 (RETURN)
 ....................  
 ....................  
 .................... // see pic18_usb.h for documentation 
@@ -6850,7 +6850,7 @@ CCS PCH C Compiler, Version 4.104, 5967               02-jul.-20 20:10
 1118:  MOVF   18,W
 111A:  MOVWF  01
 .................... } 
-111C:  GOTO   1250 (RETURN)
+111C:  GOTO   1272 (RETURN)
 ....................  
 .................... // see usb.h for documentation 
 .................... void usb_wait_for_enumeration(void)  
@@ -8327,7 +8327,7 @@ CCS PCH C Compiler, Version 4.104, 5967               02-jul.-20 20:10
 ....................    return(c); 
 115C:  MOVFF  7F,01
 .................... } 
-1160:  GOTO   125A (RETURN)
+1160:  GOTO   127C (RETURN)
 ....................  
 .................... void usb_cdc_putc_fast(char c)  
 .................... { 
@@ -8600,68 +8600,97 @@ CCS PCH C Compiler, Version 4.104, 5967               02-jul.-20 20:10
 ....................    output_a(0b0000000); 
 1242:  CLRF   F92
 1244:  CLRF   F89
-....................    usb_cdc_init();               //Inicialización del modo CDC 
-1246:  CALL   034E
-....................    usb_init();                   //Inicialización del control del USB 
-124A:  BRA    110A
 ....................     
+....................    usb_cdc_line_coding.dwDTERrate = 9600; 
+1246:  CLRF   29
+1248:  CLRF   28
+124A:  MOVLW  25
+124C:  MOVWF  27
+124E:  MOVLW  80
+1250:  MOVWF  26
+....................    usb_cdc_line_coding.bCharFormat = 0; 
+1252:  CLRF   2A
+....................    usb_cdc_line_coding.bParityType = 0; 
+1254:  CLRF   2B
+....................    usb_cdc_line_coding.bDataBits = 8; 
+1256:  MOVLW  08
+1258:  MOVWF  2C
+....................    (int8)usb_cdc_carrier = 0; 
+125A:  CLRF   x7B
+....................    usb_cdc_got_set_line_coding = FALSE; 
+125C:  BCF    x7A.0
+....................    usb_cdc_break = 0; 
+125E:  CLRF   2E
+1260:  CLRF   2D
+....................    usb_cdc_put_buffer_nextin = 0; 
+1262:  CLRF   x76
+....................    usb_cdc_get_buffer_status.got = 0; 
+1264:  BCF    x77.0
+....................  
+....................    //usb_cdc_init();               //Inicialización del modo CDC 
+....................    usb_init();                   //Inicialización del control del USB 
+1266:  BRA    110A
+....................    output_a(0b000001); 
+1268:  CLRF   F92
+126A:  MOVLW  01
+126C:  MOVWF  F89
 ....................    do  { 
 ....................       usb_task();                //Detección de la conexión de dispositivo USB 
-124C:  RCALL  10E8
+126E:  RCALL  10E8
 ....................       //Devuelve TRUE si dispositivo ha sido enumerado por el PC 
 ....................       if (usb_enumerated()) {    
-124E:  BRA    1118
-1250:  MOVF   01,F
-1252:  BZ    128E
+1270:  BRA    1118
+1272:  MOVF   01,F
+1274:  BZ    12B0
 ....................          //Si se ha recibido dato... 
 ....................          if (usb_cdc_kbhit()){          
-1254:  BTFSS  x77.0
-1256:  BRA    1280
+1276:  BTFSS  x77.0
+1278:  BRA    12A2
 ....................             recepcion=usb_cdc_getc();  //lo lee 
-1258:  BRA    113A
-125A:  MOVFF  01,7E
+127A:  BRA    113A
+127C:  MOVFF  01,7E
 ....................             //si es caracter vacio(barra espaciadora)enciende o apaga visualización 
 ....................             if (recepcion=='N')  { 
-125E:  MOVF   x7E,W
-1260:  SUBLW  4E
-1262:  BNZ   1270
+1280:  MOVF   x7E,W
+1282:  SUBLW  4E
+1284:  BNZ   1292
 ....................             output_a(0b0010000); 
-1264:  CLRF   F92
-1266:  MOVLW  10
-1268:  MOVWF  F89
+1286:  CLRF   F92
+1288:  MOVLW  10
+128A:  MOVWF  F89
 ....................             usb_cdc_putc('n'); 
-126A:  MOVLW  6E
-126C:  MOVWF  x7F
-126E:  RCALL  11B8
+128C:  MOVLW  6E
+128E:  MOVWF  x7F
+1290:  RCALL  11B8
 ....................             } 
 ....................             if (recepcion=='F') { 
-1270:  MOVF   x7E,W
-1272:  SUBLW  46
-1274:  BNZ   1280
+1292:  MOVF   x7E,W
+1294:  SUBLW  46
+1296:  BNZ   12A2
 ....................             usb_cdc_putc('f'); 
-1276:  MOVLW  66
-1278:  MOVWF  x7F
-127A:  RCALL  11B8
+1298:  MOVLW  66
+129A:  MOVWF  x7F
+129C:  RCALL  11B8
 ....................             output_a(0b0000000); 
-127C:  CLRF   F92
-127E:  CLRF   F89
+129E:  CLRF   F92
+12A0:  CLRF   F89
 ....................             }  
 ....................          } 
 ....................  
 ....................          delay_ms(300); 
-1280:  MOVLW  02
-1282:  MOVWF  x7F
-1284:  MOVLW  96
-1286:  MOVWF  x80
-1288:  BRA    11EC
-128A:  DECFSZ x7F,F
-128C:  BRA    1284
+12A2:  MOVLW  02
+12A4:  MOVWF  x7F
+12A6:  MOVLW  96
+12A8:  MOVWF  x80
+12AA:  BRA    11EC
+12AC:  DECFSZ x7F,F
+12AE:  BRA    12A6
 ....................       } 
 ....................    } while (TRUE); 
 .................... } 
-128E:  BRA    124C
+12B0:  BRA    126E
 .................... //                                                                            // 
-1290:  SLEEP 
+12B2:  SLEEP 
 
 Configuration Fuses:
    Word  1: CE24   IESO FCMEN HSPLL PLL5 CPUDIV1 USBDIV

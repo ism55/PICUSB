@@ -256,7 +256,7 @@ User Memory space:
 User Memory space: 
 
 Project Directory:
-    C:\Users\IBAUTISTA\Desktop\proteus\CSS_Proyecto2\Programa PIC\
+    C:\Users\IBAUTISTA\Desktop\proteus\RepoPic\PICUSB\
 
 Project Files:
     PC-PIC USB.c
@@ -271,7 +271,7 @@ Project Files:
     ..\..\..\..\..\..\Program Files (x86)\PICC\drivers\ctype.h
 
 Units:
-    C:\Users\IBAUTISTA\Desktop\proteus\CSS_Proyecto2\Programa PIC\PC-PIC USB (main)
+    C:\Users\IBAUTISTA\Desktop\proteus\RepoPic\PICUSB\PC-PIC USB (main)
 
 Compiler Settings:
     Processor:      PIC18F2550

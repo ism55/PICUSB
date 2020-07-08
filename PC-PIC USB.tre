@@ -1,7 +1,6 @@
 ÀÄPC-PIC USB
-   ÃÄMAIN  0/124  Ram=2
+   ÃÄMAIN  0/158  Ram=2
    ³  ÃÄ??0??
-   ³  ÃÄusb_cdc_init  0/34  Ram=0
    ³  ÃÄusb_init  0/14  Ram=0
    ³  ³  ÃÄusb_init_cs  0/6  Ram=0
    ³  ³  ³  ÀÄusb_detach  0/36  Ram=1

@@ -47,7 +47,7 @@ Count=1
 1=PC-PIC USB.c
 [Opened Files]
 1=PC-PIC USB.c
-2=..\..\..\..\..\..\Program Files (x86)\PICC\drivers\usb_desc_cdc.h
+2=usb_desc_cdc.h
 3=..\..\..\..\..\..\Program Files (x86)\PICC\drivers\usb_cdc.h
 4=..\..\..\..\..\..\Program Files (x86)\PICC\drivers\pic18_usb.c
 5=..\..\..\..\..\..\Program Files (x86)\PICC\drivers\usb.c

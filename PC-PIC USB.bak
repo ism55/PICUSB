@@ -8,8 +8,6 @@
 
 #include <18F2550.h>             //PIC a emplear
 
-#device adc=10;                  //Conversor A/D de 10 bits
-
 #fuses HSPLL,NOWDT,NOLVP,USBDIV,PLL5,CPUDIV1,VREGEN
 
 #use delay(clock=4000000)       //Frecuencia del cristal oscilador externo
@@ -21,27 +19,28 @@
 
 void main() {
 
-   int16 valor_digital;          //Valor digital obtenido del conversor A/D
-   float valor_analogico;        //Valor analógico medido en el conversor A/D
    char recepcion;               //Dato recibido del PC
-   int1 control;                 //falso o verdadero para mostrar tensión
    
-   //setup_adc_ports(AN0);         //Definición del pin a utilizar como entrada analógica
-   //setup_adc(ADC_CLOCK_INTERNAL);//Definición de la fuente de reloj para el A/D
-   //set_adc_channel(0);           //Selección del canal analógico
    set_tris_a(0b0000000);
    output_a(0b0000000);
-   usb_cdc_init();               //Inicialización del modo CDC
-   usb_init();                   //Inicialización del control del USB
    
+   usb_cdc_line_coding.dwDTERrate = 9600;
+   usb_cdc_line_coding.bCharFormat = 0;
+   usb_cdc_line_coding.bParityType = 0;
+   usb_cdc_line_coding.bDataBits = 8;
+   (int8)usb_cdc_carrier = 0;
+   usb_cdc_got_set_line_coding = FALSE;
+   usb_cdc_break = 0;
+   usb_cdc_put_buffer_nextin = 0;
+   usb_cdc_get_buffer_status.got = 0;
+
+   //usb_cdc_init();               //Inicialización del modo CDC
+   usb_init();                   //Inicialización del control del USB
+   //output_a(0b111111);
    do  {
       usb_task();                //Detección de la conexión de dispositivo USB
       //Devuelve TRUE si dispositivo ha sido enumerado por el PC
-      if (usb_enumerated()) {    
-         //Lectura del canal analógico
-   //      valor_digital=read_adc();
-   //      valor_analogico=5.0*valor_digital/1024.0;
-
+      if (usb_enumerated()) {   
          //Si se ha recibido dato...
          if (usb_cdc_kbhit()){         
             recepcion=usb_cdc_getc();  //lo lee

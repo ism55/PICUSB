@@ -23,9 +23,20 @@ void main() {
    
    set_tris_a(0b0000000);
    output_a(0b0000000);
-   usb_cdc_init();               //Inicialización del modo CDC
-   usb_init();                   //Inicialización del control del USB
    
+   usb_cdc_line_coding.dwDTERrate = 9600;
+   usb_cdc_line_coding.bCharFormat = 0;
+   usb_cdc_line_coding.bParityType = 0;
+   usb_cdc_line_coding.bDataBits = 8;
+   (int8)usb_cdc_carrier = 0;
+   usb_cdc_got_set_line_coding = FALSE;
+   usb_cdc_break = 0;
+   usb_cdc_put_buffer_nextin = 0;
+   usb_cdc_get_buffer_status.got = 0;
+
+   //usb_cdc_init();               //Inicialización del modo CDC
+   usb_init();                   //Inicialización del control del USB
+   output_a(0b000001);
    do  {
       usb_task();                //Detección de la conexión de dispositivo USB
       //Devuelve TRUE si dispositivo ha sido enumerado por el PC
