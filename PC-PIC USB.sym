@@ -184,7 +184,7 @@ FF6-FF8 @WRITE_PROGRAM_MEMORY.P1
 FF6-FF8 @READ_PROGRAM_MEMORY.P2
 
 ROM Allocation:
-11EC  @delay_ms1
+11EE  @delay_ms1
 0096  usb_ep_tx_type
 00B6  usb_ep_rx_type
 00D6  usb_ep_tx_size
@@ -247,8 +247,8 @@ ROM Allocation:
 113A  usb_cdc_getc
 1164  usb_cdc_putc_fast
 11B8  usb_cdc_putc
-1216  MAIN
-1216  @cinit
+1218  MAIN
+1218  @cinit
 
 
 User Memory space: 

@@ -8,9 +8,9 @@
 
 #include <18F2550.h>             //PIC a emplear
 
-#fuses HSPLL,NOWDT,NOLVP,USBDIV,PLL5,CPUDIV1,VREGEN
+#fuses HSPLL,NOWDT,NOLVP,USBDIV,PLL1,CPUDIV1,VREGEN
 
-#use delay(clock=4000000)       //Frecuencia del cristal oscilador externo
+#use delay(clock=48000000)       //Frecuencia del cristal oscilador externo
 
 #include <usb_cdc.h>             //Librería de control USB
 
@@ -24,7 +24,7 @@ void main() {
    set_tris_a(0b0000000);
    output_a(0b0000000);
    
-   usb_cdc_line_coding.dwDTERrate = 9600;
+   usb_cdc_line_coding.dwDTERrate = 115200;
    usb_cdc_line_coding.bCharFormat = 0;
    usb_cdc_line_coding.bParityType = 0;
    usb_cdc_line_coding.bDataBits = 8;
@@ -45,14 +45,23 @@ void main() {
          if (usb_cdc_kbhit()){         
             recepcion=usb_cdc_getc();  //lo lee
             //si es caracter vacio(barra espaciadora)enciende o apaga visualización
-            if (recepcion=='N')  {
-            output_a(0b0010000);
-            usb_cdc_putc('n');
+            
+            switch (recepcion){
+               
+               case 'P':
+                  usb_cdc_putc('P');
+               break;
+            
+               case 'N':
+                  output_a(0b0010000);
+               break;
+               
+               case 'F':
+                 output_a(0b0000000);
+               break;
+            
             }
-            if (recepcion=='F') {
-            usb_cdc_putc('f');
-            output_a(0b0000000);
-            } 
+            
          }
 
          delay_ms(300);

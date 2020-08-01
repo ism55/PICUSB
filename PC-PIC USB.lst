@@ -1,15 +1,15 @@
-CCS PCH C Compiler, Version 4.104, 5967               04-jul.-20 13:34
+CCS PCH C Compiler, Version 4.104, 5967               01-ago.-20 15:00
 
                Filename: C:\Users\IBAUTISTA\Desktop\proteus\RepoPic\PICUSB\PC-PIC USB.lst
 
-               ROM used: 4788 bytes (15%)
-                         Largest free fragment is 27980
+               ROM used: 4794 bytes (15%)
+                         Largest free fragment is 27974
                RAM used: 416 (20%) at main() level
                          460 (22%) worst case
                Stack:    16 worst case (7 in main + 9 for interrupts)
 
 *
-0000:  GOTO   1216
+0000:  GOTO   1218
 *
 0008:  MOVWF  04
 000A:  MOVFF  FD8,05
@@ -64,30 +64,30 @@ CCS PCH C Compiler, Version 4.104, 5967               04-jul.-20 13:34
 .................... #list 
 ....................  
 ....................  
-.................... #fuses HSPLL,NOWDT,NOLVP,USBDIV,PLL5,CPUDIV1,VREGEN 
+.................... #fuses HSPLL,NOWDT,NOLVP,USBDIV,PLL1,CPUDIV1,VREGEN 
 ....................  
-.................... #use delay(clock=4000000)       //Frecuencia del cristal oscilador externo 
+.................... #use delay(clock=48000000)       //Frecuencia del cristal oscilador externo 
 *
-11EC:  CLRF   FEA
-11EE:  MOVLW  80
-11F0:  MOVWF  FE9
-11F2:  MOVF   FEF,W
-11F4:  BZ    1212
-11F6:  MOVLW  01
-11F8:  MOVWF  01
-11FA:  CLRF   00
-11FC:  DECFSZ 00,F
-11FE:  BRA    11FC
-1200:  DECFSZ 01,F
-1202:  BRA    11FA
-1204:  MOVLW  4A
-1206:  MOVWF  00
-1208:  DECFSZ 00,F
-120A:  BRA    1208
-120C:  BRA    120E
-120E:  DECFSZ FEF,F
-1210:  BRA    11F6
-1212:  GOTO   12AC (RETURN)
+11EE:  CLRF   FEA
+11F0:  MOVLW  80
+11F2:  MOVWF  FE9
+11F4:  MOVF   FEF,W
+11F6:  BZ    1214
+11F8:  MOVLW  0F
+11FA:  MOVWF  01
+11FC:  CLRF   00
+11FE:  DECFSZ 00,F
+1200:  BRA    11FE
+1202:  DECFSZ 01,F
+1204:  BRA    11FC
+1206:  MOVLW  8F
+1208:  MOVWF  00
+120A:  DECFSZ 00,F
+120C:  BRA    120A
+120E:  NOP   
+1210:  DECFSZ FEF,F
+1212:  BRA    11F8
+1214:  GOTO   12B2 (RETURN)
 ....................  
 .................... #include <usb_cdc.h>             //Librería de control USB 
 .................... ///////////////////////////////////////////////////////////////////////// 
@@ -5099,7 +5099,7 @@ CCS PCH C Compiler, Version 4.104, 5967               04-jul.-20 13:34
 1110:  SUBLW  02
 1112:  BNZ   110C
 .................... } 
-1114:  GOTO   1268 (RETURN)
+1114:  GOTO   126A (RETURN)
 ....................  
 ....................  
 .................... // see pic18_usb.h for documentation 
@@ -6850,7 +6850,7 @@ CCS PCH C Compiler, Version 4.104, 5967               04-jul.-20 13:34
 1118:  MOVF   18,W
 111A:  MOVWF  01
 .................... } 
-111C:  GOTO   1272 (RETURN)
+111C:  GOTO   1274 (RETURN)
 ....................  
 .................... // see usb.h for documentation 
 .................... void usb_wait_for_enumeration(void)  
@@ -8327,7 +8327,7 @@ CCS PCH C Compiler, Version 4.104, 5967               04-jul.-20 13:34
 ....................    return(c); 
 115C:  MOVFF  7F,01
 .................... } 
-1160:  GOTO   127C (RETURN)
+1160:  GOTO   127E (RETURN)
 ....................  
 .................... void usb_cdc_putc_fast(char c)  
 .................... { 
@@ -8449,7 +8449,7 @@ CCS PCH C Compiler, Version 4.104, 5967               04-jul.-20 13:34
 11E4:  MOVFF  7F,80
 11E8:  BRA    1164
 .................... } 
-11EA:  RETLW  00
+11EA:  GOTO   12A8 (RETURN)
 ....................  
 .................... #include <ctype.h> 
 .................... //////////////////////////////////////////////////////////////////////////// 
@@ -8571,129 +8571,140 @@ CCS PCH C Compiler, Version 4.104, 5967               04-jul.-20 13:34
 ....................  
 .................... void main() { 
 *
-1216:  CLRF   FF8
-1218:  BCF    FD0.7
-121A:  BSF    07.7
-121C:  CLRF   FEA
-121E:  CLRF   FE9
-1220:  CLRF   1F
-1222:  CLRF   23
-1224:  CLRF   x76
-1226:  CLRF   x7D
-1228:  MOVF   FC1,W
-122A:  ANDLW  C0
-122C:  IORLW  0F
-122E:  MOVWF  FC1
-1230:  MOVLW  07
-1232:  MOVWF  FB4
-1234:  CLRF   1B
-1236:  MOVLW  04
-1238:  MOVWF  1C
-123A:  MOVLW  0C
-123C:  MOVWF  1D
+1218:  CLRF   FF8
+121A:  BCF    FD0.7
+121C:  BSF    07.7
+121E:  CLRF   FEA
+1220:  CLRF   FE9
+1222:  CLRF   1F
+1224:  CLRF   23
+1226:  CLRF   x76
+1228:  CLRF   x7D
+122A:  MOVF   FC1,W
+122C:  ANDLW  C0
+122E:  IORLW  0F
+1230:  MOVWF  FC1
+1232:  MOVLW  07
+1234:  MOVWF  FB4
+1236:  CLRF   1B
+1238:  MOVLW  04
+123A:  MOVWF  1C
+123C:  MOVLW  0C
+123E:  MOVWF  1D
 ....................  
 ....................    char recepcion;               //Dato recibido del PC 
 ....................     
 ....................    set_tris_a(0b0000000); 
-123E:  MOVLW  00
-1240:  MOVWF  F92
+1240:  MOVLW  00
+1242:  MOVWF  F92
 ....................    output_a(0b0000000); 
-1242:  CLRF   F92
-1244:  CLRF   F89
+1244:  CLRF   F92
+1246:  CLRF   F89
 ....................     
-....................    usb_cdc_line_coding.dwDTERrate = 9600; 
-1246:  CLRF   29
-1248:  CLRF   28
-124A:  MOVLW  25
-124C:  MOVWF  27
-124E:  MOVLW  80
-1250:  MOVWF  26
+....................    usb_cdc_line_coding.dwDTERrate = 115200; 
+1248:  CLRF   29
+124A:  MOVLW  01
+124C:  MOVWF  28
+124E:  MOVLW  C2
+1250:  MOVWF  27
+1252:  CLRF   26
 ....................    usb_cdc_line_coding.bCharFormat = 0; 
-1252:  CLRF   2A
+1254:  CLRF   2A
 ....................    usb_cdc_line_coding.bParityType = 0; 
-1254:  CLRF   2B
+1256:  CLRF   2B
 ....................    usb_cdc_line_coding.bDataBits = 8; 
-1256:  MOVLW  08
-1258:  MOVWF  2C
+1258:  MOVLW  08
+125A:  MOVWF  2C
 ....................    (int8)usb_cdc_carrier = 0; 
-125A:  CLRF   x7B
+125C:  CLRF   x7B
 ....................    usb_cdc_got_set_line_coding = FALSE; 
-125C:  BCF    x7A.0
+125E:  BCF    x7A.0
 ....................    usb_cdc_break = 0; 
-125E:  CLRF   2E
-1260:  CLRF   2D
+1260:  CLRF   2E
+1262:  CLRF   2D
 ....................    usb_cdc_put_buffer_nextin = 0; 
-1262:  CLRF   x76
+1264:  CLRF   x76
 ....................    usb_cdc_get_buffer_status.got = 0; 
-1264:  BCF    x77.0
+1266:  BCF    x77.0
 ....................  
 ....................    //usb_cdc_init();               //Inicialización del modo CDC 
 ....................    usb_init();                   //Inicialización del control del USB 
-1266:  BRA    110A
+1268:  BRA    110A
 ....................    output_a(0b000001); 
-1268:  CLRF   F92
-126A:  MOVLW  01
-126C:  MOVWF  F89
+126A:  CLRF   F92
+126C:  MOVLW  01
+126E:  MOVWF  F89
 ....................    do  { 
 ....................       usb_task();                //Detección de la conexión de dispositivo USB 
-126E:  RCALL  10E8
+1270:  RCALL  10E8
 ....................       //Devuelve TRUE si dispositivo ha sido enumerado por el PC 
 ....................       if (usb_enumerated()) {    
-1270:  BRA    1118
-1272:  MOVF   01,F
-1274:  BZ    12B0
+1272:  BRA    1118
+1274:  MOVF   01,F
+1276:  BZ    12B6
 ....................          //Si se ha recibido dato... 
 ....................          if (usb_cdc_kbhit()){          
-1276:  BTFSS  x77.0
-1278:  BRA    12A2
+1278:  BTFSS  x77.0
+127A:  BRA    12A8
 ....................             recepcion=usb_cdc_getc();  //lo lee 
-127A:  BRA    113A
-127C:  MOVFF  01,7E
+127C:  BRA    113A
+127E:  MOVFF  01,7E
 ....................             //si es caracter vacio(barra espaciadora)enciende o apaga visualización 
-....................             if (recepcion=='N')  { 
-1280:  MOVF   x7E,W
-1282:  SUBLW  4E
-1284:  BNZ   1292
-....................             output_a(0b0010000); 
-1286:  CLRF   F92
-1288:  MOVLW  10
-128A:  MOVWF  F89
-....................             usb_cdc_putc('n'); 
-128C:  MOVLW  6E
-128E:  MOVWF  x7F
-1290:  RCALL  11B8
+....................              
+....................             switch (recepcion){ 
+1282:  MOVF   x7E,W
+1284:  XORLW  50
+1286:  BZ    1292
+1288:  XORLW  1E
+128A:  BZ    129A
+128C:  XORLW  08
+128E:  BZ    12A2
+1290:  BRA    12A8
+....................                 
+....................                case 'P': 
+....................                   usb_cdc_putc('P'); 
+1292:  MOVLW  50
+1294:  MOVWF  x7F
+1296:  BRA    11B8
+....................                break; 
+1298:  BRA    12A8
+....................              
+....................                case 'N': 
+....................                   output_a(0b0010000); 
+129A:  CLRF   F92
+129C:  MOVLW  10
+129E:  MOVWF  F89
+....................                break; 
+12A0:  BRA    12A8
+....................                 
+....................                case 'F': 
+....................                  output_a(0b0000000); 
+12A2:  CLRF   F92
+12A4:  CLRF   F89
+....................                break; 
+12A6:  BRA    12A8
+....................              
 ....................             } 
-....................             if (recepcion=='F') { 
-1292:  MOVF   x7E,W
-1294:  SUBLW  46
-1296:  BNZ   12A2
-....................             usb_cdc_putc('f'); 
-1298:  MOVLW  66
-129A:  MOVWF  x7F
-129C:  RCALL  11B8
-....................             output_a(0b0000000); 
-129E:  CLRF   F92
-12A0:  CLRF   F89
-....................             }  
+....................              
 ....................          } 
 ....................  
 ....................          delay_ms(300); 
-12A2:  MOVLW  02
-12A4:  MOVWF  x7F
-12A6:  MOVLW  96
-12A8:  MOVWF  x80
-12AA:  BRA    11EC
-12AC:  DECFSZ x7F,F
-12AE:  BRA    12A6
+12A8:  MOVLW  02
+12AA:  MOVWF  x7F
+12AC:  MOVLW  96
+12AE:  MOVWF  x80
+12B0:  BRA    11EE
+12B2:  DECFSZ x7F,F
+12B4:  BRA    12AC
 ....................       } 
 ....................    } while (TRUE); 
 .................... } 
-12B0:  BRA    126E
+12B6:  BRA    1270
 .................... //                                                                            // 
-12B2:  SLEEP 
+12B8:  SLEEP 
 
 Configuration Fuses:
-   Word  1: CE24   IESO FCMEN HSPLL PLL5 CPUDIV1 USBDIV
+   Word  1: CE20   IESO FCMEN HSPLL PLL1 CPUDIV1 USBDIV
    Word  2: 1E3E   BROWNOUT NOWDT BORV20 PUT WDT32768 VREGEN
    Word  3: 8700   PBADEN CCP2C1 MCLR LPT1OSC
    Word  4: 0081   STVREN NODEBUG NOLVP NOXINST

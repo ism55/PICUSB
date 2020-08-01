@@ -1,6 +1,6 @@
 
-ROM used: 4788 (15%)
-          4788 (15%) including unused fragments
+ROM used: 4794 (15%)
+          4794 (15%) including unused fragments
 
           1 Average locations per line
           6 Average locations per statement
@@ -12,7 +12,7 @@ Stack used: 16 worst case (out of 31 total available)
 
 Lines Stmts  %   Files
 ----- ----- ---  -----
-   63    30   4  PC-PIC USB.c
+   72    29   4  PC-PIC USB.c
   392     0   0  ..\..\..\..\..\..\Program Files (x86)\PICC\devices\18F2550.h
   538   109  14  ..\..\..\..\..\..\Program Files (x86)\PICC\drivers\usb_cdc.h
   222     0   0  ..\..\..\..\..\..\Program Files (x86)\PICC\drivers\pic18_usb.h
@@ -23,7 +23,7 @@ Lines Stmts  %   Files
  1281   320  41  ..\..\..\..\..\..\Program Files (x86)\PICC\drivers\pic18_usb.c
    28    80  10  ..\..\..\..\..\..\Program Files (x86)\PICC\drivers\ctype.h
 ----- -----
- 5002   776 Total
+ 5011   775 Total
 
 Page ROM  %  RAM   Vol Diff  Functions:
 ---- --- --- ---   --- ----  ----------
@@ -89,19 +89,19 @@ Page ROM  %  RAM   Vol Diff  Functions:
 0     26   0   0    59  2.3  usb_cdc_get_discard
 0     42   0   2   216  5.7  usb_cdc_getc
 0     84   1   4   272  4.6  usb_cdc_putc_fast
-0     52   1   1   134  1.6  usb_cdc_putc
-0    158   2   2   759  4.3  MAIN
+0     54   1   1   134  1.6  usb_cdc_putc
+0    162   2   2   780  5.8  MAIN
 
 Program metrics:
     Functions               53
-    Statements              776
+    Statements              775
     Comments                3396
-    Volume (V)              37352
-    Difficilty (D)          224.5
-    Effort to implement (E) 8386255
-    Time to implement (T)   129 hours, 25 minutes
+    Volume (V)              37387
+    Difficilty (D)          225.9
+    Effort to implement (E) 8445501
+    Time to implement (T)   130 hours, 20 minutes
     Est Delivered Bugs (B)  14
-    Cyclomatic Complexity   126
+    Cyclomatic Complexity   127
     Maintainability (MI)    85
 
  Segment     Used  Free
@@ -109,7 +109,7 @@ Program metrics:
 00000-00002     4  0  
 00004-00006     4  0  
 00008-00094   142  0  
-00096-07FFE  4638  27980  
+00096-07FFE  4644  27974  
 
 
 
