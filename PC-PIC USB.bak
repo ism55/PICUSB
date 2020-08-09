@@ -48,7 +48,7 @@ void main() {
             
             switch (recepcion){
                
-               case 'p':
+               case 'P':
                   usb_cdc_putc('P');
                break;
             
